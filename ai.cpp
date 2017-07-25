@@ -79,22 +79,22 @@ std::pair<int, int> AI::calculate() {
                 for (int k = 0; k < win_count_; k++) {
                     if (win_matrix_[i][j][k]) {
                         if (1 == player_win_[k]) {
-                            player_score_[i][j] += 200;
+                            player_score_[i][j] += 200;     // oringinal: 200
                         } else if (2 == player_win_[k]) {
-                            player_score_[i][j] += 400;
+                            player_score_[i][j] += 400;     // oringinal: 400
                         } else if (3 == player_win_[k]) {
-                            player_score_[i][j] += 2000;
+                            player_score_[i][j] += 2000;    // oringinal: 2000
                         } else if (4 == player_win_[k]) {
-                            player_score_[i][j] += 10000;
+                            player_score_[i][j] += 10000;   // oringinal: 10000
                         }
                         if (1 == ai_win_[k]) {
-                            ai_score_[i][j] += 320;
+                            ai_score_[i][j] += 320;         // oringinal: 320
                         } else if (2 == ai_win_[k]) {
-                            ai_score_[i][j] += 420;
+                            ai_score_[i][j] += 420;         // oringinal: 420
                         } else if (3 == ai_win_[k]) {
-                            ai_score_[i][j] += 4200;
+                            ai_score_[i][j] += 4200;        // oringinal: 4200
                         } else if (4 == ai_win_[k]) {
-                            ai_score_[i][j] += 20000;
+                            ai_score_[i][j] += 20000;       // oringinal: 20000
                         }
                     }
                 }
