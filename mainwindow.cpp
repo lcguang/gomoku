@@ -51,6 +51,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *e) {
             update();
             setEnabled(false);
             QMessageBox::information(this, "Win", "Win", QMessageBox::Ok);
+            return;
         }
         ai_->updateBoard(x, y, 1);
         std::pair<int, int> pos = ai_->calculate();
@@ -60,6 +61,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *e) {
             update();
             setEnabled(false);
             QMessageBox::information(this, "Lose", "Lose", QMessageBox::Ok);
+            return;
         }
     }
     update();
