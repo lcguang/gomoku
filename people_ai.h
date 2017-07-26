@@ -1,21 +1,22 @@
-#ifndef AI_H
-#define AI_H
+#ifndef PEOPLE_AI_H
+#define PEOPLE_AI_H
 
-#include "board.h"
 #include <map>
 #include <set>
+#include "board.h"
 
-class AI {
+class PeopleAi : public Board {
 public:
-    AI();
-    ~AI();
-    void updateBoard(int, int, int);
-    std::pair<int, int> calculate();
+    PeopleAi();
+    ~PeopleAi();
+    void mouseReleaseEvent(QMouseEvent *);
+
+    void aiUpdateBoard(int, int, int);
+    std::pair<int, int> aiCalculate();
 
 private:
     void initWinMatrix();
 
-    Board* board_;
     std::vector<std::vector<std::vector<bool>>> win_matrix_;
     std::vector<std::vector<long long>> player_score_;
     std::vector<std::vector<long long>> ai_score_;
@@ -25,4 +26,4 @@ private:
     int win_count_;
 };
 
-#endif // AI_H
+#endif // PEOPLE_AI_H

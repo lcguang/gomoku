@@ -1,7 +1,8 @@
-#include "ai.h"
+#include <QMessageBox>
+#include <QMouseEvent>
+#include "people_ai.h"
 
-AI::AI() {
-    board_ = new Board();
+PeopleAi::PeopleAi() {
     win_matrix_.resize(15, std::vector<std::vector<bool>>(15, std::vector<bool>(572, false)));
     player_score_.resize(15, std::vector<long long>(15, 0));
     ai_score_.resize(15, std::vector<long long>(15, 0));
@@ -12,12 +13,40 @@ AI::AI() {
     ai_win_.resize(win_count_, 0);
 }
 
-AI::~AI() {
-    delete board_;
+PeopleAi::~PeopleAi() {
 }
 
-void AI::updateBoard(int x, int y, int val) {
-    board_->chessboard_[x][y] = val;
+void PeopleAi::mouseReleaseEvent(QMouseEvent *e) {
+    int x, y;
+    if (e->x() >= 20 && e->x() < 620 && e->y() >= 20 && e->y() < 620) {
+        x = (e->x() - 20) / 40;
+        y = (e->y() - 20) / 40;
+        if (!chessboard_[x][y]) {
+            chessboard_[x][y] = 1;
+        }
+        update();
+        if (isWin(x, y)) {
+            update();
+            setEnabled(false);
+            QMessageBox::information(this, "Win", "Win", QMessageBox::Ok);
+            return;
+        }
+        aiUpdateBoard(x, y, 1);
+        std::pair<int, int> pos = aiCalculate();
+        chessboard_[pos.first][pos.second] = 2;
+        aiUpdateBoard(pos.first, pos.second, 2);
+        if (isWin(pos.first, pos.second)) {
+            update();
+            setEnabled(false);
+            QMessageBox::information(this, "Lose", "Lose", QMessageBox::Ok);
+            return;
+        }
+    }
+    update();
+}
+
+void PeopleAi::aiUpdateBoard(int x, int y, int val) {
+    chessboard_[x][y] = val;
     std::pair<int, int> pos = std::make_pair(x, y);
     auto it = pos_win_map_[pos].begin();
     while (it != pos_win_map_[pos].end()) {
@@ -27,7 +56,7 @@ void AI::updateBoard(int x, int y, int val) {
     }
 }
 
-void AI::initWinMatrix() {
+void PeopleAi::initWinMatrix() {
     for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 11; j++) {
             for (int k = 0; k < 5; k++) {
@@ -70,12 +99,12 @@ void AI::initWinMatrix() {
     }
 }
 
-std::pair<int, int> AI::calculate() {
+std::pair<int, int> PeopleAi::aiCalculate() {
     int max = 0;
     int x = 0, y = 0;
     for (int i = 0; i < 15; i++) {
         for (int j = 0; j < 15; j++) {
-            if (0 == board_->chessboard_[i][j]) {
+            if (0 == chessboard_[i][j]) {
                 for (int k = 0; k < win_count_; k++) {
                     if (win_matrix_[i][j][k]) {
                         if (1 == player_win_[k]) {

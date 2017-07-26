@@ -3,21 +3,22 @@
 
 #include <QMainWindow>
 #include <QtGui>
-#include "board.h"
-#include "ai.h"
 
+namespace Ui {
+    class MainWindow;
+}
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void paintEvent(QPaintEvent *);
-    void mouseReleaseEvent(QMouseEvent *);
+
+private slots:
+    void on_pushButton_people_ai_clicked();
 
 private:
-    Board* board_;
-    AI* ai_;
+    Ui::MainWindow* ui_;
 };
 
 #endif // MAINWINDOW_H

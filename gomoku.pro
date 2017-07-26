@@ -14,11 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    ai.cpp \
-    board.cpp
+    board.cpp \
+    people_ai.cpp
 
 HEADERS  += mainwindow.h \
-    ai.h \
-    board.h
+    board.h \
+    people_ai.h
 
 FORMS    += mainwindow.ui

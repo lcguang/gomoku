@@ -1,12 +1,17 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+#include <QFrame>
 #include <vector>
 
-class Board {
+class Board : public QFrame {
+    Q_OBJECT
+
 public:
     Board();
     ~Board();
+
+    virtual void paintEvent(QPaintEvent *);
 
     int isWin(int, int);
     std::vector<std::vector<int>> chessboard_;
