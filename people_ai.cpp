@@ -14,6 +14,7 @@ PeopleAi::PeopleAi() {
 }
 
 PeopleAi::~PeopleAi() {
+
 }
 
 void PeopleAi::mouseReleaseEvent(QMouseEvent *e) {

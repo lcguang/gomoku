@@ -16,6 +16,7 @@ public:
 
 private slots:
     void on_pushButton_people_ai_clicked();
+    void on_pushButton_people_people_clicked();
 
 private:
     Ui::MainWindow* ui_;

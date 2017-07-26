@@ -11,32 +11,35 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Gomoku</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="pushButton_people_ai">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>90</y>
-      <width>141</width>
-      <height>41</height>
+      <x>100</x>
+      <y>60</y>
+      <width>200</width>
+      <height>60</height>
      </rect>
     </property>
     <property name="text">
-     <string>people vs ai</string>
+     <string>People v.s. AI</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>400</width>
-     <height>22</height>
-    </rect>
-   </property>
+   <widget class="QPushButton" name="pushButton_people_people">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>120</y>
+      <width>200</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>People v.s. People</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

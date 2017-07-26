@@ -4,7 +4,7 @@
 Board::Board() {
     resize(640, 640);
     chessboard_.resize(15, std::vector<int>(15, 0));
-    player_ = 0;
+    player_ = 1;
 }
 
 Board::~Board() {
