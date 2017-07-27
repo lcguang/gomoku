@@ -2,15 +2,17 @@
 #define LOGGER_H
 
 #include <vector>
+#include <fstream>
 
 class Logger {
 public:
-	Logger();
+	Logger(std::string fname);
 	~Logger();
 
 	void writeLog(int x, int y);
 
 private:
+	std::ofstream log_file_;
 	std::vector<std::vector<int>> board_;
 	int player_;
 };
